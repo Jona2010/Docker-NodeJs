@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <title>Ejemplo Html5</title>
+   <meta charset="utf-8">
+   <meta name="title" content="Html5">
+   <meta name="description" contente="Ejemplo Html5">
+   <meta name="generator" content="Vim"/>
+   <meta name="author" content="Jonathan Aguirre"/>
+
+   <script>
+      function recitar() {
+      const url = 'http://localhost:3000/recitar'
+      fetch(url).then(
+          response => response.json()
+      ).then(
+          data => {
+            document.querySelector("#poema").innerHTML = data.text
+        }
+      )
+   }
+   </script>
+   <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+      recitar();
+      alert("HOLA");
+      });
+   </script>
+</head>
+
+<body>
+   <header>
+      <h2></h2>
+   </header>
+   <nav>
+   </nav>
+   <section>
+      <article>
+         <div id="poema"></div>
+      </article>
+   </section>
+   <aside>
+   </aside>
+   <footer>
+   </footer>
+</body>
+</html>

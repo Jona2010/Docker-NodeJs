@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <title>Ejemplo Html5</title>
+   <meta charset="utf-8">
+   <meta name="title" content="Html5">
+   <meta name="description" contente="Ejemplo Html5">
+   <meta name="generator" content="Vim"/>
+   <meta name="author" content="Jonathan Aguirre"/>
+
+   <script>
+      function recitar(markupText) {
+      const url = 'http://localhost:3001/'
+      const data = {
+         text: markupText
+      }
+      console.log(data)
+      const request = {
+         method: 'POST', // Podría ser GET
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(data),
+      }
+      http = fetch(url, request)
+      http.then(
+         response => response.json()
+      ).then(
+         data => {
+            document.querySelector("#htmlCode").innerHTML = data.text
+         })
+      }
+
+   //    document.addEventListener('DOMContentLoaded', function () {
+   //    const text = document.querySelector('#markupText')
+   //     document.querySelector('#markupForm').onsubmit = () => {
+   //         recitar(text.value)
+   //         return false;
+   //     }
+   // })
+   </script>
+   <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+      const text = document.querySelector("#markupText")
+       document.querySelector("#markupForm").onSubmit = () => 
+       {
+           recitar(text.value);
+           return false;
+       }
+   });
+   </script>
+</head>
+
+<body>
+   <header>
+      <h2></h2>
+   </header>
+   <nav>
+   </nav>
+   <section>
+      <article>
+         <div id="htmlCode"></div>
+      </article>
+   </section>
+   <aside>
+   </aside>
+   <footer>
+   </footer>
+</body>
+</html>

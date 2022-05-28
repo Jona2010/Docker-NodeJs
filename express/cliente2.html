@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">  
+<head>    
+    <title>Ejemplo Html5</title>    
+    <meta charset="utf-8">
+    <meta name="title" content="Html5">
+    <meta name="description" content="Ejemplo Html5">
+   <meta name="generator"content="Vim" />
+   <meta name="author"content="Jonathan Aguirre"/>   
+    <!--<link href="estilos.css" rel="stylesheet">-->
+   <!--<style></style>-->
+   <!--<script src="https://code.jquery.com/jquery-3.5.0.js"></script>-->
+   <!--<script src="script.js"></script>-->
+   <script>
+   function recitar(markupText) {
+      const url = 'http://localhost:3001/'
+      const data = {
+         text: markupText
+      }
+      console.log(data)
+      const request = {
+         method: 'POST', // Podría ser GET
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(data),
+      }
+      http = fetch(url, request)
+      http.then(
+         response => response.json()
+      ).then(
+         data => {
+            document.querySelector("#htmlCode").innerHTML = data.text
+         }
+          )
+    }
+   </script>
+   <script>
+   document.addEventListener("DOMContentLoaded", function(event) {
+      const text = document.querySelector('#markupText')
+        document.querySelector('#markupForm').onsubmit = () => {
+            recitar(text.value)
+            return false;
+        }
+   });
+   </script>
+</head>  
+<body>    
+    <header>
+    </header>
+   <nav>
+    </nav>
+    <section>      
+        <article>
+         <form id="markupForm">
+            <textarea id="markupText"></textarea>
+            <button type="submit">Enviar</button>
+         </form>
+        </article>      
+    </section>
+    <aside>
+    </aside>
+    <footer>
+    </footer>
+</body>  
+</html>
